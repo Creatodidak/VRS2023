@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/cellNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-1dp"
+        android:background="@drawable/tbborderkarhutla"
+        android:gravity="center"
+        android:padding="2dp"
+        android:text="NO"
+        android:textColor="@color/black"
+        android:textSize="8sp" />
+
+    <TextView
+        android:id="@+id/cellKecamatan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="-1dp"
+        android:background="@drawable/tbborderkarhutla"
+        android:padding="2dp"
+        android:text="KECAMATAN"
+        android:textColor="@color/black"
+        android:textSize="8sp" />
+
+    <TextView
+        android:id="@+id/cellPolsek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="-1dp"
+        android:background="@drawable/tbborderkarhutla"
+        android:padding="2dp"
+        android:text="POLSEK"
+        android:textColor="@color/black"
+        android:textSize="8sp" />
+
+    <TextView
+        android:id="@+id/cellL"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="-1dp"
+        android:background="@drawable/tbborderkarhutla"
+        android:gravity="center"
+        android:padding="2dp"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="8sp" />
+
+    <TextView
+        android:id="@+id/cellM"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="-1dp"
+        android:background="@drawable/tbborderkarhutla"
+        android:gravity="center"
+        android:padding="2dp"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="8sp" />
+
+    <TextView
+        android:id="@+id/cellH"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="-1dp"
+        android:background="@drawable/tbborderkarhutla"
+        android:gravity="center"
+        android:padding="2dp"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="8sp" />
+
+    <TextView
+        android:id="@+id/cellTotal"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="-1dp"
+        android:background="@drawable/tbborderkarhutla"
+        android:gravity="center"
+        android:padding="2dp"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="8sp" />
+
+    <TextView
+        android:id="@+id/cellB"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="-1dp"
+        android:background="@drawable/tbborderkarhutla"
+        android:gravity="center"
+        android:padding="2dp"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="8sp" />
+
+    <TextView
+        android:id="@+id/cellS"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="-1dp"
+        android:background="@drawable/tbborderkarhutla"
+        android:gravity="center"
+        android:padding="2dp"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="8sp" />
+
+</TableRow>

@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/tugasselesai"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="end"
+                android:paddingEnd="5dp"
+                android:text="mengambil data verifikasi..."
+                android:textColor="#FF0000"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="start|center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/lkIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    app:srcCompat="@drawable/fireyellow" />
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/freebold"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Koordinat"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/lkKoordinat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="10sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lokasi"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/lkLokasi"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="10sp" />
+                </TableRow>
+            </TableLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnResponseTambahLaporan"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:text="INPUT LAPORAN"
+                    android:textColor="@color/white"
+                    app:backgroundTint="@color/icon_background"
+                    app:cornerRadius="5dp"
+                    app:icon="@drawable/baseline_add_24"
+                    app:iconGravity="textStart"
+                    app:iconTint="@color/white"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/drafts"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/tbborder"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:paddingTop="10dp"
+                    android:text="DRAFT" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/black"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/foto"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/defaultimg" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/black"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/foto2"
+                                android:layout_width="0dp"
+                                android:layout_height="75dp"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="2dp"
+                                android:layout_marginBottom="4dp"
+                                android:layout_weight="1"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/defaultimg" />
+
+                            <ImageView
+                                android:id="@+id/foto3"
+                                android:layout_width="0dp"
+                                android:layout_height="75dp"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="2dp"
+                                android:layout_marginBottom="4dp"
+                                android:layout_weight="1"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/defaultimg" />
+
+                            <ImageView
+                                android:id="@+id/foto4"
+                                android:layout_width="0dp"
+                                android:layout_height="75dp"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="2dp"
+                                android:layout_marginBottom="4dp"
+                                android:layout_weight="1"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/defaultimg" />
+
+                            <ImageView
+                                android:id="@+id/foto5"
+                                android:layout_width="0dp"
+                                android:layout_height="75dp"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="4dp"
+                                android:layout_marginBottom="4dp"
+                                android:layout_weight="1"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/defaultimg" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="Ketuk foto untuk memperbesar"
+                        android:textSize="10sp" />
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="PERSONIL"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=":"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/txNama"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:justificationMode="inter_word"
+                                android:lineHeight="18sp"
+                                android:paddingStart="5dp"
+                                android:paddingEnd="5dp"
+                                android:textSize="12sp" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ID DATA"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=":"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/txDataId"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:justificationMode="inter_word"
+                                android:lineHeight="18sp"
+                                android:paddingStart="5dp"
+                                android:paddingEnd="5dp"
+                                android:textSize="12sp" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TERDETEKSI"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=":"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/txTerdeteksi"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:justificationMode="inter_word"
+                                android:lineHeight="18sp"
+                                android:paddingStart="5dp"
+                                android:paddingEnd="5dp"
+                                android:textSize="12sp" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="KOORDINAT BRIN"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=":"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/txKoordinat"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:justificationMode="inter_word"
+                                android:lineHeight="18sp"
+                                android:paddingStart="5dp"
+                                android:paddingEnd="5dp"
+                                android:textSize="12sp" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="KOORD. PENGECEKAN"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=":"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/txLokasi"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:justificationMode="inter_word"
+                                android:lineHeight="18sp"
+                                android:paddingStart="5dp"
+                                android:paddingEnd="5dp"
+                                android:textSize="12sp" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="PERKIRAAN JARAK\nKOORD. BRIN dan\nKOORD. PENGECEKAN"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=":"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/txJarak"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:justificationMode="inter_word"
+                                android:lineHeight="18sp"
+                                android:paddingStart="5dp"
+                                android:paddingEnd="5dp"
+                                android:textSize="12sp" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="PEMILIK LAHAN"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=":"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/etPemilik"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@android:drawable/editbox_background_normal"
+                                android:ems="10"
+                                android:enabled="false"
+                                android:focusable="true"
+                                android:focusableInTouchMode="true"
+                                android:inputType="text"
+                                android:padding="5dp"
+                                android:textSize="12sp"
+                                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="LUAS LAHAN"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=":"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/etLuas"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@android:drawable/editbox_background_normal"
+                                android:ems="10"
+                                android:enabled="false"
+                                android:focusable="true"
+                                android:focusableInTouchMode="true"
+                                android:inputType="number"
+                                android:padding="5dp"
+                                android:textSize="12sp"
+                                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="top"
+                                android:text="PENYEBAB API"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="top"
+                                android:text=":"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/etPenyebab"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@android:drawable/editbox_background_normal"
+                                android:ems="10"
+                                android:enabled="false"
+                                android:focusable="true"
+                                android:focusableInTouchMode="true"
+                                android:gravity="top|left"
+                                android:inputType="text|textMultiLine"
+                                android:minLines="5"
+                                android:padding="5dp"
+                                android:textSize="12sp"
+                                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="top"
+                                android:text="KONDISI TERAKHIR"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="top"
+                                android:text=":"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/etKondisi"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@android:drawable/editbox_background_normal"
+                                android:ems="10"
+                                android:enabled="false"
+                                android:focusable="true"
+                                android:focusableInTouchMode="true"
+                                android:gravity="top|left"
+                                android:inputType="text|textMultiLine"
+                                android:minLines="5"
+                                android:padding="5dp"
+                                android:textSize="12sp"
+                                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="top"
+                                android:text="RINCIAN LAIN"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="top"
+                                android:text=":"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/etRincian"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@android:drawable/editbox_background_normal"
+                                android:ems="10"
+                                android:enabled="false"
+                                android:focusable="true"
+                                android:focusableInTouchMode="true"
+                                android:gravity="top|left"
+                                android:inputType="text|textMultiLine"
+                                android:minLines="5"
+                                android:padding="5dp"
+                                android:textSize="12sp"
+                                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="DILAPORKAN PADA"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=":"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/txCreated"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:justificationMode="inter_word"
+                                android:lineHeight="18sp"
+                                android:paddingStart="5dp"
+                                android:paddingEnd="5dp"
+                                android:textSize="12sp" />
+
+                        </TableRow>
+
+                    </TableLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/freebold"
+                            android:text="EDIT"
+                            android:textColor="@color/white"
+                            app:backgroundTint="#FF0000"
+                            app:cornerRadius="5dp"
+                            app:icon="@drawable/baseline_edit_note_24"
+                            app:iconGravity="textStart"
+                            app:iconTint="@color/white" />
+
+                        <Button
+                            android:id="@+id/btBatal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/freebold"
+                            android:text="BATAL"
+                            android:textColor="@color/white"
+                            android:visibility="gone"
+                            app:backgroundTint="#FF0000"
+                            app:cornerRadius="5dp"
+                            app:icon="@drawable/baseline_close_24"
+                            app:iconGravity="textStart"
+                            app:iconTint="@color/white" />
+
+                        <Button
+                            android:id="@+id/btSimpan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/freebold"
+                            android:text="SIMPAN"
+                            android:textColor="@color/black"
+                            android:visibility="gone"
+                            app:backgroundTint="#F9A825"
+                            app:cornerRadius="5dp"
+                            app:icon="@drawable/baseline_check_24"
+                            app:iconGravity="textStart"
+                            app:iconTint="@color/black" />
+
+                        <Button
+                            android:id="@+id/btnKirimDraft"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1"
+                            android:text="KIRIM"
+                            android:textColor="@color/white"
+                            app:backgroundTint="@color/icon_background"
+                            app:cornerRadius="5dp"
+                            app:icon="@drawable/baseline_send_24"
+                            app:iconGravity="textEnd"
+                            app:iconTint="@color/white"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
