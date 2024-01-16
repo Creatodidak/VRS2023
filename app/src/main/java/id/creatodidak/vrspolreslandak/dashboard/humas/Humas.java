@@ -1,9 +1,12 @@
 package id.creatodidak.vrspolreslandak.dashboard.humas;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -13,28 +16,31 @@ import java.util.List;
 
 import id.creatodidak.vrspolreslandak.R;
 import id.creatodidak.vrspolreslandak.api.Ldkserver;
-import id.creatodidak.vrspolreslandak.dashboard.humas.adapter.BeritaAdapter;
+import id.creatodidak.vrspolreslandak.dashboard.humas.adapter.NewsAdapter;
+import id.creatodidak.vrspolreslandak.dashboard.humas.adapter.NewsAdapter;
 import id.creatodidak.vrspolreslandak.dashboard.humas.model.DataItem;
-import id.creatodidak.vrspolreslandak.dashboard.humas.model.Mberita;
+import id.creatodidak.vrspolreslandak.dashboard.humas.model.ResItem;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Humas extends AppCompatActivity {
 
-    BeritaAdapter adp;
+    NewsAdapter adp;
     LinearLayoutManager lm;
-    Berita endpoint;
-    List<DataItem> data = new ArrayList<>();
+    News endpoint;
+    List<ResItem> data = new ArrayList<>();
     RecyclerView rv;
     SwipeRefreshLayout sw;
+
+    CardView btPublishMenu, btMyNews;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_humas);
-        endpoint = Ldkserver.getClient().create(Berita.class);
-        adp = new BeritaAdapter(this, data);
+        endpoint = Ldkserver.getClient().create(News.class);
+        adp = new NewsAdapter(this, data);
         rv = findViewById(R.id.rvBerita);
         lm = new LinearLayoutManager(this);
         sw = findViewById(R.id.swBerita);
@@ -44,6 +50,26 @@ public class Humas extends AppCompatActivity {
 
         rv.setAdapter(adp);
         rv.setLayoutManager(lm);
+
+        btPublishMenu = findViewById(R.id.btPublishMenu);
+        btMyNews = findViewById(R.id.btMyNews);
+
+        btPublishMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Humas.this, PublishBerita.class);
+                startActivity(i);
+            }
+        });
+
+        sw.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                data.clear();
+                adp.notifyDataSetChanged();
+                loadData();
+            }
+        });
 
         loadData();
     }
@@ -57,14 +83,14 @@ public class Humas extends AppCompatActivity {
             page = String.valueOf((data.size()/10)+1);
         }
 
-        Call<Mberita> call = endpoint.berita(page);
-        call.enqueue(new Callback<Mberita>() {
+        Call<id.creatodidak.vrspolreslandak.dashboard.humas.model.News> call = endpoint.allnews();
+        call.enqueue(new Callback<id.creatodidak.vrspolreslandak.dashboard.humas.model.News>() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
-            public void onResponse(Call<Mberita> call, Response<Mberita> response) {
+            public void onResponse(Call<id.creatodidak.vrspolreslandak.dashboard.humas.model.News> call, Response<id.creatodidak.vrspolreslandak.dashboard.humas.model.News> response) {
                 sw.setRefreshing(false);
-                if(response.isSuccessful() && response.body() != null && response.body().getBerita() != null){
-                    data.addAll(response.body().getBerita().getData());
+                if(response.isSuccessful() && response.body() != null && response.body().getRes() != null){
+                    data.addAll(response.body().getRes());
                     if(data.isEmpty()){
                         adp.notifyDataSetChanged();
                     }else{
@@ -74,7 +100,7 @@ public class Humas extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Mberita> call, Throwable t) {
+            public void onFailure(Call<id.creatodidak.vrspolreslandak.dashboard.humas.model.News> call, Throwable t) {
                 sw.setRefreshing(false);
             }
         });

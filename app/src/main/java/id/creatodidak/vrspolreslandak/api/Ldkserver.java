@@ -10,7 +10,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Ldkserver {
-    private static final String BASE_URL = "https://ldkserver.polreslandak.id/api/";
+    private static final String BASE_URL = "https://servervrs.polreslandak.id/api/";
     private static Retrofit retrofit;
 
     public static Retrofit getClient() {
