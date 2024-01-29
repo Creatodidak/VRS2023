@@ -211,9 +211,9 @@ public class PublishBerita extends AppCompatActivity {
 
         RequestBody imageRequestBody = RequestBody.create(MediaType.parse("image/jpeg"), byteArray);
         MultipartBody.Part image = MultipartBody.Part.createFormData("image", "image.jpg", imageRequestBody);
-        String judul = judulNews.getText().toString();
+        String judul = judulNews.getText().toString().replaceAll("\\n", "");
         String isi = isiNews.getText().toString();
-        String captions = caption.getText().toString();
+        String captions = caption.getText().toString().replaceAll("\\n", "");
         String satker = sharedPreferences.getString("satker", "");
         String pers = sharedPreferences.getString("nrp", "");
         String kategoris = kategori.getSelectedItem().toString();

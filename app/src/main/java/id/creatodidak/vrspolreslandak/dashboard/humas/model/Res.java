@@ -2,7 +2,7 @@ package id.creatodidak.vrspolreslandak.dashboard.humas.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ResItem{
+public class Res{
 
 	@SerializedName("pers")
 	private String pers;
@@ -23,7 +23,7 @@ public class ResItem{
 	private String gambar;
 
 	@SerializedName("updated_at")
-	private String updatedAt;
+	private Object updatedAt;
 
 	@SerializedName("satker")
 	private String satker;
@@ -91,11 +91,11 @@ public class ResItem{
 		return gambar;
 	}
 
-	public void setUpdatedAt(String updatedAt){
+	public void setUpdatedAt(Object updatedAt){
 		this.updatedAt = updatedAt;
 	}
 
-	public String getUpdatedAt(){
+	public Object getUpdatedAt(){
 		return updatedAt;
 	}
 

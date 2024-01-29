@@ -1,6 +1,7 @@
 package id.creatodidak.vrspolreslandak.dashboard.humas.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import id.creatodidak.vrspolreslandak.R;
+import id.creatodidak.vrspolreslandak.dashboard.humas.BacaBerita;
 import id.creatodidak.vrspolreslandak.dashboard.humas.model.ResItem;
 import id.creatodidak.vrspolreslandak.helper.DateUtils;
 
@@ -49,6 +51,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.BeritaViewHold
         Glide.with(context)
                 .load(beritaItem.getGambar())
                 .into(holder.newsImg);
+
+        holder.newsWrapper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, BacaBerita.class);
+                i.putExtra("link", beritaItem.getLink());
+                context.startActivity(i);
+            }
+        });
     }
 
     @Override

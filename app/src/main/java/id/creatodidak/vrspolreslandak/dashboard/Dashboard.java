@@ -25,6 +25,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.FileProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -46,6 +49,7 @@ import id.creatodidak.vrspolreslandak.adapter.SliderAdapterExample;
 import id.creatodidak.vrspolreslandak.admin.NotifikasiUpdate;
 import id.creatodidak.vrspolreslandak.api.Client;
 import id.creatodidak.vrspolreslandak.api.Endpoint;
+import id.creatodidak.vrspolreslandak.api.Ldkserver;
 import id.creatodidak.vrspolreslandak.api.models.AtensiResponse;
 import id.creatodidak.vrspolreslandak.api.models.ServerResponse;
 import id.creatodidak.vrspolreslandak.api.models.SliderItem;
@@ -55,8 +59,12 @@ import id.creatodidak.vrspolreslandak.api.models.cuaca.DatacuacaItem;
 import id.creatodidak.vrspolreslandak.api.models.cuaca.TemperatureItem;
 import id.creatodidak.vrspolreslandak.api.models.cuaca.WeatherItem;
 import id.creatodidak.vrspolreslandak.auth.Login;
+import id.creatodidak.vrspolreslandak.dashboard.djagaswara.DjagaSwara;
 import id.creatodidak.vrspolreslandak.dashboard.harkamtibmas.Harkamtibmas;
 import id.creatodidak.vrspolreslandak.dashboard.humas.Humas;
+import id.creatodidak.vrspolreslandak.dashboard.humas.News;
+import id.creatodidak.vrspolreslandak.dashboard.humas.adapter.NewsAdapter;
+import id.creatodidak.vrspolreslandak.dashboard.humas.model.ResItem;
 import id.creatodidak.vrspolreslandak.dashboard.karhutla.DashboardKarhutla;
 import id.creatodidak.vrspolreslandak.dashboard.lantas.Lantas;
 import id.creatodidak.vrspolreslandak.dashboard.pedulistunting.DashboardPeduliStunting;
@@ -105,7 +113,7 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
             Manifest.permission.ACCESS_NOTIFICATION_POLICY,
             Manifest.permission.WAKE_LOCK
     };
-    ImageView ivprofile, iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8, iv9, iv11, iv12;
+    ImageView ivprofile, iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8, iv9, iv10, iv11, iv12;
     Button btAtensi;
     SharedPreferences sharedPreferences;
     String nrp, satfung, pangkat, jabatan, nama, foto, satker;
@@ -141,6 +149,12 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
     private Handler handler;
     private Runnable runnable;
 
+    NewsAdapter adp;
+    LinearLayoutManager lm;
+    News endpointnews;
+    List<ResItem> data = new ArrayList<>();
+    RecyclerView rv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,6 +181,7 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         iv7 = findViewById(R.id.iv7);
         iv8 = findViewById(R.id.iv8);
         iv9 = findViewById(R.id.iv9);
+        iv10 = findViewById(R.id.iv10);
         iv11 = findViewById(R.id.iv11);
         iv12 = findViewById(R.id.iv12);
         btAtensi = findViewById(R.id.btAtensiBaru);
@@ -269,6 +284,7 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         iv7.setOnClickListener(this);
         iv8.setOnClickListener(this);
         iv9.setOnClickListener(this);
+        iv10.setOnClickListener(this);
 
         btAtensi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -404,6 +420,53 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
             }
         };
         handler.postDelayed(runnable, 10000);
+
+        endpointnews = Ldkserver.getClient().create(News.class);
+        adp = new NewsAdapter(this, data);
+        rv = findViewById(R.id.rvBerita);
+        lm = new LinearLayoutManager(this);
+
+        rv.setDrawingCacheEnabled(true);
+        rv.setItemViewCacheSize(20);
+
+        rv.setAdapter(adp);
+        rv.setLayoutManager(lm);
+
+        if(jabatan.equals("KAPOLRES") || jabatan.equals("WAKAPOLRES") || jabatan.equals("KABAG") && satfung.equals("BAG OPS") || jabatan.equals("KASAT") && satfung.equals("SAT INTELKAM") || jabatan.equals("KAPOLSEK") || satfung.equals("SI TIK")){
+            iv10.setVisibility(View.VISIBLE);
+        }else{
+            iv10.setVisibility(View.GONE);
+        }
+
+    }
+
+    private void loadDataBerita() {
+        String page;
+        if(data.isEmpty()){
+            page = null;
+        }else{
+            page = String.valueOf((data.size()/10)+1);
+        }
+
+        Call<id.creatodidak.vrspolreslandak.dashboard.humas.model.News> call = endpointnews.allnews();
+        call.enqueue(new Callback<id.creatodidak.vrspolreslandak.dashboard.humas.model.News>() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onResponse(Call<id.creatodidak.vrspolreslandak.dashboard.humas.model.News> call, Response<id.creatodidak.vrspolreslandak.dashboard.humas.model.News> response) {
+                if(response.isSuccessful() && response.body() != null && response.body().getRes() != null){
+                    data.addAll(response.body().getRes());
+                    if(data.isEmpty()){
+                        adp.notifyDataSetChanged();
+                    }else{
+                        adp.notifyItemInserted(data.size() - 1);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<id.creatodidak.vrspolreslandak.dashboard.humas.model.News> call, Throwable t) {
+            }
+        });
     }
 
     @SuppressLint("IntentReset")
@@ -787,12 +850,17 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
                     },
                     true, true, false
             ).show();
+        }else if (v.getId() == R.id.iv10) {
+            Intent i = new Intent(this, DjagaSwara.class);
+            startActivity(i);
         }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        loadDataBerita();
+
         if (EasyPermissions.hasPermissions(this, allPermissions)) {
             loadAtensi();
         }

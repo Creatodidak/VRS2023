@@ -151,7 +151,7 @@
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/noprofilepic" />
+                            android:src="@drawable/baseline_account_circle_24" />
                     </androidx.cardview.widget.CardView>
 
                     <LinearLayout
@@ -638,6 +638,15 @@
                     app:srcCompat="@drawable/tahanan" />
 
                 <ImageView
+                    android:id="@+id/iv10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    app:srcCompat="@drawable/djagaswara" />
+
+                <ImageView
                     android:id="@+id/iv11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -653,22 +662,20 @@
                     android:layout_weight="1"
                     app:srcCompat="@drawable/logout" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:visibility="invisible"
-                    app:srcCompat="@drawable/stunting" />
-
             </LinearLayout>
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/textView16"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/bold"
+                android:text="BERITA TERBARU HUMAS" />
 
-            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBerita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
     </ScrollView>
