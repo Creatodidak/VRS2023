@@ -71,7 +71,6 @@ public class Humas extends AppCompatActivity {
             }
         });
 
-        loadData();
     }
 
     private void loadData() {
@@ -104,5 +103,11 @@ public class Humas extends AppCompatActivity {
                 sw.setRefreshing(false);
             }
         });
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadData();
+
     }
 }

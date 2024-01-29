@@ -235,6 +235,7 @@ public class PublishBerita extends AppCompatActivity {
                                 @Override
                                 public void onPositiveButtonClick(AlertDialog alert) {
                                     alert.dismiss();
+                                    finish();
                                 }
 
                                 @Override
